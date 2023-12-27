@@ -12,6 +12,6 @@ public class Monk extends Hero{
 
     @Override
     public String toString() {
-        return ("Монах:  " + nameHero + "здоровте: " + health + "/" + healthMax + "броня: " + armor);
+        return ("Монах:  " + nameHero + " здоровте: " + health + "/" + healthMax + " броня: " + armor);
     }
 }

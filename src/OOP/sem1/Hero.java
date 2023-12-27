@@ -1,6 +1,6 @@
 package OOP.sem1;
 
-public class Hero {
+public abstract class  Hero {
 
     protected int  health, healthMax,armor;
 

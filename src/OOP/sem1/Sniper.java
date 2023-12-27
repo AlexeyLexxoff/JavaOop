@@ -12,7 +12,7 @@ public class Sniper extends Hero {
 
     @Override
     public String toString() {
-        return ("Снайпер:  " + nameHero + "здоровте: " + health + "/" + healthMax + "броня: " + armor);
+        return ("Снайпер: " + nameHero + " здоровте: " + health + "/" + healthMax + " броня: " + armor);
     }
 
 

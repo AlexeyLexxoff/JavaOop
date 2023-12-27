@@ -13,6 +13,6 @@ public class Rogue extends Hero {
 
     @Override
     public String toString() {
-        return ("Разбойник:  " + nameHero + "здоровте: " + health + "/" + healthMax + "броня: " + armor);
+        return ("Разбойник:  " + nameHero + " здоровте: " + health + "/" + healthMax + " броня: " + armor);
     }
 }
