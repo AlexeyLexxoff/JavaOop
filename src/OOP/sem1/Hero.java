@@ -1,46 +1,59 @@
 package OOP.sem1;
 
+import OOP.sem1.Interfaces.GameI;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Random;
 
-public abstract class  Hero {
+public abstract class Hero implements GameI {
 
-    protected int  health, healthMax,armor;
+    public int health, healthMax, armor, initiative;
+    public Random random = new Random();
+    public int[] damage;
+    public String nameHero;
+    public Vector2 position;
 
-    protected int[] damage;
 
-    protected String  nameHero;
 
-    protected Vector2 position;
-
-    public Hero(int health, int healthMax, int armor, int[] damage, String nameHero,int posX, int posY) {
+    public Hero(int health, int healthMax, int armor, int[] damage, String nameHero, int posX, int posY, int initiative) {
         this.health = health;
         this.healthMax = healthMax;
         this.armor = armor;
         this.damage = damage;
         this.nameHero = nameHero;
-        this.position = new Vector2(posX,posY);
-
+        this.position = new Vector2(posX, posY);
+        this.initiative = initiative;
     }
-    public void printEnemysDistance(ArrayList<Hero> enemys){
+    public void getDamage(int damage){
+        health -= damage;
+        if (health < 0) health = 0;
+    }
 
-        enemys.forEach(n-> System.out.print(position.rangeEnemy(n.position)+", "));
+    public void printEnemysDistance(ArrayList<Hero> enemys) {
+        enemys.forEach(n -> System.out.print(position.rangeEnemy(n.position) + ", "));
         System.out.println();
-
-
     }
 
-    public float findMinDistance(ArrayList<Hero> enemys){
+    public float findMinDistance(ArrayList<Hero> enemys) {
         ArrayList<Float> distances = new ArrayList<>();
-        enemys.forEach(n-> distances.add(position.rangeEnemy(n.position)));
+        enemys.forEach(n -> distances.add(position.rangeEnemy(n.position)));
         float minDistance = Collections.min(distances);
         return minDistance;
     }
 
-
-
-
-
+    public Hero findNearestEnemy(ArrayList<Hero> enemys) {
+        Hero heroTMP = enemys.get(0);
+        for (int i = 0; i < enemys.size(); i++) {
+            if (this.position.rangeEnemy(enemys.get(i).position) < this.position.rangeEnemy(heroTMP.position)) {
+                heroTMP = enemys.get(i);
+            }
+        }
+        return heroTMP;
+    }
+    public int getInitiative(){
+        return initiative;
+    }
 }
-
 
