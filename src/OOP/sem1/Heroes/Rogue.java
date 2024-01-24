@@ -15,4 +15,10 @@ public class Rogue extends MeleeHero {
     public String toString() {
         return ("Разбойник: " + super.toString());
     }
+
+
+    @Override
+    public String getInfo() {
+        return "Разбойник";
+    }
 }

@@ -14,4 +14,9 @@ public class Monk extends HealerHero {
     public String toString() {
         return ("Монах: " + super.toString());
     }
+
+    @Override
+    public String getInfo() {
+        return "Монах";
+    }
 }

@@ -53,5 +53,10 @@ public class Peasant extends Hero {
             getArrow(findMoreEmptyRDD(teamAllies));
         }
     }
+
+    @Override
+    public String getInfo() {
+        return "Крестьянин";
+    }
 }
 

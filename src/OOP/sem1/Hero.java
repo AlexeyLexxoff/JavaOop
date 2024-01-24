@@ -26,6 +26,9 @@ public abstract class Hero implements GameI {
         this.position = new Vector2(posX, posY);
         this.initiative = initiative;
     }
+
+
+
     public void getDamage(int damage){
         health -= damage;
         if (health < 0) health = 0;
@@ -55,5 +58,14 @@ public abstract class Hero implements GameI {
     public int getInitiative(){
         return initiative;
     }
+
+    public int[]  getCoords() {
+        return new int[]{position.posX, position.posY};
+    }
+
+    public int getHp() {
+        return health;
+    }
+    abstract public String getInfo();
 }
 

@@ -14,4 +14,9 @@ public class Crossbower extends RangeHero {
     public String toString() {
         return "Арбалетчик: " + super.toString();
     }
+
+    @Override
+    public String getInfo() {
+        return  "Арбалетчик";
+    }
 }

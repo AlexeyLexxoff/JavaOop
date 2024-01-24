@@ -15,4 +15,9 @@ public class Wizard extends HealerHero {
         return ("Колдун: " + super.toString());
     }
 
+
+    @Override
+    public String getInfo() {
+        return "Колдун";
+    }
 }

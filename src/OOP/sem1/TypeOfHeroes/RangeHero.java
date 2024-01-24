@@ -17,6 +17,11 @@ public abstract class RangeHero extends Hero {
         this.rangeMaxDamage = rangeMaxDamage;
     }
 
+    public void getShoot(Hero target){
+        int damagePoint = (this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0];
+        target.getDamage((this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0]);
+
+    }
 
     public Hero findBestEnemyRDD(ArrayList<Hero> enemys) {
         Hero heroTMP = enemys.get(0);
@@ -48,7 +53,7 @@ public abstract class RangeHero extends Hero {
         if (this.health == 0 || this.quantityShots == 0) return;
         Hero target = findBestEnemyRDD(teamEnemy);
         target.getDamage((this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0]);
-        System.out.println("Нанесен урон" + this.damagePoint);
+        //System.out.println("Нанесен урон" + this.damagePoint);
         quantityShots--;
     }
 }

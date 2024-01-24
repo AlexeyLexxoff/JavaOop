@@ -14,4 +14,10 @@ public class Pikeman extends MeleeHero {
     public String toString() {
         return ("Копейщик: " + super.toString());
     }
+
+
+    @Override
+    public String getInfo() {
+        return "Копейщик";
+    }
 }
