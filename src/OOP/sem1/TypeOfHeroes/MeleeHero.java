@@ -17,11 +17,12 @@ public abstract class MeleeHero extends Hero {
     }
 
     public void getDamage(Hero target) {
-        if (this.position.rangeEnemy(target.position) < 2) {
-            damagePoint = this.random.nextInt(damage[0], damage[1]);
-            target.health = target.health - damagePoint;
-        } else {
-            System.out.println("Где я?");
+
+        damagePoint = this.random.nextInt(damage[0], damage[1]);
+        target.health = target.health - damagePoint;
+        if (target.health < 0 ){
+            target.health = 0;
+
         }
     }
 
@@ -69,7 +70,7 @@ public abstract class MeleeHero extends Hero {
         Hero tmpHero = findBestEnemyMDD(teamEnemy);
         if (position.rangeEnemy(tmpHero.position) < 2){
             getDamage(tmpHero);
-            System.out.println("Нанесен урон" + this.damagePoint);
+            //System.out.println("Нанесен урон" + this.damagePoint);
         } else {
             Vector2 tmpVec = getStepMDD(tmpHero);
             boolean step = true;

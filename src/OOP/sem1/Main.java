@@ -19,15 +19,24 @@ public class Main {
         twoCommands.addAll(heroesBlack);
         twoCommands.addAll(heroesWhite);
         twoCommands.sort(((o1, o2) -> o2.getInitiative()- o1.getInitiative())); //сортировка лямбдой
-        twoCommands.sort(new Comparator<Hero>() {
-            @Override
-            public int compare(Hero o1, Hero o2) {
-                return o2.getInitiative() - o1.getInitiative();
-            }
-        });
+//        twoCommands.sort(new Comparator<Hero>() {
+//            @Override
+//            public int compare(Hero o1, Hero o2) {
+//                return o2.getInitiative() - o1.getInitiative();
+//            }
+//        });
         Scanner scanner = new Scanner(System.in);
+        boolean flag;
         while (true){
             View.view();
+            if (gameOverBlack()){
+                flag = true;
+                break;
+            }
+            if (gameOverWhite()){
+                flag = false;
+                break;
+            }
             for (Hero h: twoCommands) {
                 if (heroesBlack.contains(h)){
                     h.gameStep(heroesWhite, heroesBlack);
@@ -36,6 +45,11 @@ public class Main {
                 }
             }
             scanner.nextLine();
+        }
+        if (flag){
+            System.out.println("Победила команда белых ");
+        }else {
+            System.out.println("Победила команда черных ");
         }
 
 //        twoCommands.forEach(n-> System.out.println(n.getInitiative())); // Печать инициативы
@@ -98,6 +112,20 @@ public class Main {
 //        System.out.println(enemy);
 
     }
+public static boolean gameOverWhite(){
+    for (Hero hero : heroesWhite) {
+    if (hero.health > 0 ) return false;
+
+    }
+    return true;
+    }
+public static boolean gameOverBlack(){
+   for (Hero hero : heroesBlack) {
+   if (hero.health > 0 ) return false;
+
+   }
+   return true;
+   }
 
     public static ArrayList<Hero> heroesWhite = new ArrayList<>();
     public static ArrayList<Hero> heroesBlack = new ArrayList<>();
