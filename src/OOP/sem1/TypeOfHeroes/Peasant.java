@@ -51,6 +51,11 @@ public class Peasant extends Hero {
     }
 
     @Override
+    public String getType() {
+        return "Крестьянин";
+    }
+
+    @Override
     public void gameStep(ArrayList<Hero> teamEnemy, ArrayList<Hero> teamAllies) {
         if (this.health > 0) {
             getArrow(findMoreEmptyRDD(teamAllies));
@@ -59,7 +64,7 @@ public class Peasant extends Hero {
 
     @Override
     public String getInfo() {
-        return "Крестьянин";
+        return "Peasant";
     }
 }
 

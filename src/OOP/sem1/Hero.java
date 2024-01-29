@@ -59,6 +59,9 @@ public abstract class Hero implements GameI {
         }
         return heroTMP;
     }
+
+
+    public abstract String getType ();
     public int getInitiative(){
         return initiative;
     }

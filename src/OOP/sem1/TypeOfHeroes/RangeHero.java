@@ -9,12 +9,15 @@ import java.util.Random;
 public abstract class RangeHero extends Hero {
     int quantityShotsMax, quantityShots, rangeMaxDamage;
     private int damagePoint;
+    int step =1;
+    public Hero angryRDD = null;
 
     public RangeHero(int health, int healthMax, int armor, int[] damage, String nameHero, int posX, int posY, int quantityShots, int quantityShotsMax, int rangeMaxDamage) {
         super(health, healthMax, armor, damage, nameHero, posX, posY, 3);
         this.quantityShots = quantityShots;
         this.quantityShotsMax = quantityShotsMax;
         this.rangeMaxDamage = rangeMaxDamage;
+
     }
 
     public void getShoot(Hero target){
@@ -50,10 +53,24 @@ public abstract class RangeHero extends Hero {
 
     @Override
     public void gameStep(ArrayList<Hero> teamEnemy, ArrayList<Hero> teamAllies) {
-        if (this.health == 0 || this.quantityShots == 0) return;
+        if (this.health == 0) return;
+        if (this.quantityShots == 0) {
+            this.angryRDD.health = health;
+            this.angryRDD.gameStep(teamEnemy, teamAllies);
+            this.position = angryRDD.position;
+            return;
+        }
+
         Hero target = findBestEnemyRDD(teamEnemy);
         target.getDamage((this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0]);
         //System.out.println("Нанесен урон" + this.damagePoint);
         quantityShots--;
     }
+
+    @Override
+    public String getType() {
+        return "Range";
+    }
+
+
 }
