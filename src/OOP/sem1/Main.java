@@ -1,13 +1,10 @@
 package OOP.sem1;
 
 import OOP.sem1.Heroes.*;
-import OOP.sem1.TypeOfHeroes.HealerHero;
-import OOP.sem1.TypeOfHeroes.MeleeHero;
+
 import OOP.sem1.TypeOfHeroes.Peasant;
-import OOP.sem1.TypeOfHeroes.RangeHero;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,12 +16,7 @@ public class Main {
         twoCommands.addAll(heroesBlack);
         twoCommands.addAll(heroesWhite);
         twoCommands.sort(((o1, o2) -> o2.getInitiative()- o1.getInitiative())); //сортировка лямбдой
-//        twoCommands.sort(new Comparator<Hero>() {
-//            @Override
-//            public int compare(Hero o1, Hero o2) {
-//                return o2.getInitiative() - o1.getInitiative();
-//            }
-//        });
+
         Scanner scanner = new Scanner(System.in);
         boolean flag;
         while (true){
@@ -47,31 +39,32 @@ public class Main {
             scanner.nextLine();
         }
         if (flag){
-            System.out.println("Победила команда белых ");
-        }else {
-            System.out.println("Победила команда черных ");
+            System.out.println("Победила команда белых");
+        } else {
+            System.out.println("Победила команда черных");
         }
 
 
 
-    }
-public static boolean gameOverWhite(){
-    for (Hero hero : heroesWhite) {
-    if (hero.health > 0 ) return false;
+
 
     }
-    return true;
+    public static boolean gameOverWhite(){
+        for (Hero hero : heroesWhite) {
+            if (hero.health > 0) return false;
+        }
+        return true;
     }
-public static boolean gameOverBlack(){
-   for (Hero hero : heroesBlack) {
-   if (hero.health > 0 ) return false;
-
-   }
-   return true;
-   }
+    public static boolean gameOverBlack(){
+        for (Hero hero : heroesBlack) {
+            if (hero.health > 0) return false;
+        }
+        return true;
+    }
 
     public static ArrayList<Hero> heroesWhite = new ArrayList<>();
     public static ArrayList<Hero> heroesBlack = new ArrayList<>();
+
     public static ArrayList<Hero> twoCommands = new ArrayList<>();
 
     static ArrayList<Hero> generateCommand(int n, int y) {
